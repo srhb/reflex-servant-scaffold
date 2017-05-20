@@ -1,11 +1,12 @@
-{ reflex-platform ? import ./reflex-platform {}
-, pkgs            ? import <nixpkgs>         {}
-, ghc             ? pkgs.haskell.packages.ghc801
-, ghcjs           ? reflex-platform.ghcjs        }:
+{ pkgs ? import <nixpkgs> {}
+, reflex-platform ? import ./reflex-platform {}
+, ghc             ? reflex-platform.ghc
+, ghcjs           ? reflex-platform.ghcjs
+}:
 
 let
-  server = ghc.callPackage   ./server { inherit ghc;   };
-  client = ghcjs.callPackage ./client { inherit ghcjs; };
+  server = ghc.callPackage   ./server { compiler = ghc;   };
+  client = ghcjs.callPackage ./client { compiler = ghcjs; };
 in
   pkgs.writeScriptBin "serve" ''
     #!${pkgs.stdenv.shell}

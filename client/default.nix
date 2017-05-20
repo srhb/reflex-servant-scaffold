@@ -1,10 +1,9 @@
-{ reflex-platform ? import ../reflex-platform {}
-, ghcjs
-, common ? import ../common
+{ pkgs ? import <nixpkgs> {}
+, reflex-platform ? import ../reflex-platform {}
+, compiler ? reflex-platform.ghc
 }:
 let 
-  drv = ghcjs.callPackage ./client.nix {
-    common = common { compiler = ghcjs; };
-  };
+  common = compiler.callPackage ../common/common.nix { };
+  client = compiler.callPackage ./client.nix { inherit common; };
 in
-  if reflex-platform.nixpkgs.pkgs.lib.inNixShell then drv.env else drv
+  if pkgs.lib.inNixShell then client.env else client
