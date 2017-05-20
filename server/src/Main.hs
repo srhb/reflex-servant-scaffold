@@ -10,7 +10,7 @@ import Network.Wai.Handler.Warp (run)
 
 main = do
   (d:_) <- getArgs
-  putStrLn "Serving on localhost:8080/static"
+  putStrLn "Serving on localhost:8080/static/, visit http://localhost:8080/static/index.html"
   run 8080 $
     serve api (serveDirectory d)
 
