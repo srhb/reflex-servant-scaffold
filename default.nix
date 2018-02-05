@@ -1,5 +1,5 @@
 { pkgs ? import <nixpkgs> {}
-, reflex-platform ? import ./reflex-platform {}
+, reflex-platform ? import ./reflex-platform.nix { inherit pkgs; }
 , ghc             ? reflex-platform.ghc
 , ghcjs           ? reflex-platform.ghcjs
 }:

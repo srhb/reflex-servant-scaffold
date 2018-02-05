@@ -1,0 +1,5 @@
+#!/usr/bin/env nix-shell
+#!nix-shell -p nix-prefetch-git -i bash
+
+DIR=$(dirname "$0")
+nix-prefetch-git git@github.com:reflex-frp/reflex-platform.git > "$DIR/reflex-platform.json"
