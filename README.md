@@ -2,7 +2,9 @@
 
 ``
 ./update-platform
+
 nix-build default.nix
+
 ./result/bin/serve
 ``
 
