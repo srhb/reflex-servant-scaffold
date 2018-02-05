@@ -1,12 +1,10 @@
 ## TL;DR:
 
-``
+```
 ./update-platform
-
 nix-build default.nix
-
 ./result/bin/serve
-``
+```
 
 Visit http://localhost:8080/static/index.html in your browser.
 
